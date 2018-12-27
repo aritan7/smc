@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>Third</title>
+    </head>
+    <body>
+        {% if not login_status %}
+        <h1>Hello, stranger</h1>
+        <!-- 
+            easier way:
+            <form method="POST" action="/login">
+        -->
+
+        <form method="POST" action="{{ url_for('login')}}">
+            <input placeholder='Username' name='username'> </input>
+            <input type="submit" value="Login"></input>
+        </form>
+        <font color='red'>{{ error }}</font>
+
+        {% else %}
+        <h1> Hello, {{ user }} </h1>
+        <form method="POST" action='/logout'>
+            <input type="submit" value="Logout"></input>
+        </form>        
+        {% endif %}
+
+    </body>
+
+</html>

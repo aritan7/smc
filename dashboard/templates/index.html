@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+    <h2>TF-IDF Frequency </h2>
+    <!-- <div id="barchart_values" style="width: 900px; height: 300px;"></div> -->
+    <div id="barchart_values"></div>
+    <br>
+    <h2>WordCloud </h2>
+    <img src="{{ url_for('static', filename='files/' + wordcloud) }}" />
+
+    
+
+{%endblock%}
+
+{% block script %}
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable( {{ tfidf|tojson }} );
+
+      var options = {
+        title: 'Top Ten Tf-Idf Score',
+      };
+
+
+      var chart = new google.visualization.ColumnChart(document.getElementById("barchart_values"));
+      chart.draw(data, options);
+    }
+  </script>
+
+{%endblock%}
