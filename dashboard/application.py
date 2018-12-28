@@ -14,7 +14,7 @@ FILES_STATIC = os.path.join(APP_STATIC, 'files')
 @app.route('/')
 def index():
     # store under templates folder
-    return render_template("index.html")
+    return render_template("home.html")
 
 
 # read user_timeline from from static/files directory. 

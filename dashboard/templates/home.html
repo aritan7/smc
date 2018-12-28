@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <form>
+        <div class="form-group">
+                <label for="exampleInputEmail1">Screen Name:</label>
+                <input type="text" class="form-control" id="screen_name"  placeholder="Enter screen name">
+        </div>
+        <button type="button" class="btn btn-primary" onclick="redirectTimeline()">Submit</button>
+    </form>
+
+
+{%endblock%}
+
+{% block script %}
+    <script type="text/javascript">
+    function redirectTimeline(){
+        var screen_name=document.getElementById("screen_name").value;
+        window.location.href = "/timeline/"+ screen_name
+    }
+    </script>
+{% endblock %}
